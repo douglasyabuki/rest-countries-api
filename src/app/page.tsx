@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div className="w-screen h-screen bg-slate-800 flex items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center bg-slate-800">
       Hello, Next.js!
     </div>
   );

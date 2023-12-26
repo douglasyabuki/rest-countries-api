@@ -1,13 +1,33 @@
 "use client";
 
 import { Country } from "@/services/countries";
+import { useState } from "react";
+import CountriesFilters from "./countries-filters/CountriesFilters";
+import FilteredCountries from "./filtered-countries/FilteredCountries";
 
 export interface IFilterableCountriesProps {
   allCountries: Country[];
 }
 
-export default function FilterableCountries(
-  allCountries: IFilterableCountriesProps,
-) {
-  return <div>{JSON.stringify(allCountries)}</div>;
+export default function FilterableCountries({
+  allCountries,
+}: IFilterableCountriesProps) {
+  const [textFilter, setTextFilter] = useState<string>("");
+  const [regionFilter, setRegionFilter] = useState<string>("");
+
+  return (
+    <div className="h-full w-screen overflow-y-auto overflow-x-hidden">
+      <CountriesFilters
+        textFilter={textFilter}
+        setTextFilter={setTextFilter}
+        regionFilter={regionFilter}
+        setRegionFilter={setRegionFilter}
+      ></CountriesFilters>
+      <FilteredCountries
+        regionFilter={regionFilter}
+        textFilter={textFilter}
+        allCountries={allCountries}
+      ></FilteredCountries>
+    </div>
+  );
 }

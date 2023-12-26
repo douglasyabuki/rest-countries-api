@@ -2,6 +2,7 @@
 
 import { Country } from "@/services/countries";
 import * as React from "react";
+import CountryCard from "./country-card/CountryCard";
 
 export interface FilteredCountriesProps {
   allCountries: Country[];
@@ -35,5 +36,11 @@ export default function FilteredCountries({
       : [];
   }, [textFilter, regionFilter, allCountries]);
 
-  return <div>{JSON.stringify(filteredCountries)}</div>;
+  return (
+    <div className="flex flex-wrap justify-evenly gap-20">
+      {filteredCountries.map((filteredCountry, id) => (
+        <CountryCard key={id} country={filteredCountry}></CountryCard>
+      ))}
+    </div>
+  );
 }

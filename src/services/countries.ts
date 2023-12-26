@@ -2,6 +2,19 @@ export interface CountryFlags {
   svg: string;
   png: string;
 }
+
+export interface CountryCurrency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
+export interface CountryLanguage {
+  iso639_1: string;
+  iso639_2: string;
+  name: string;
+  nativeName: string;
+}
 export interface Country {
   name: string;
   topLevelDomain: string[];
@@ -21,17 +34,8 @@ export interface Country {
   nativeName: string;
   numericCode: string;
   flags: CountryFlags;
-  currencies: Array<{
-    code: string;
-    name: string;
-    symbol: string;
-  }>;
-  languages: Array<{
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
-  }>;
+  currencies: CountryCurrency[];
+  languages: CountryLanguage[];
   translations: {
     [key: string]: string;
   };

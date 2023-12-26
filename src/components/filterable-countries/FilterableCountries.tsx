@@ -16,7 +16,7 @@ export default function FilterableCountries({
   const [regionFilter, setRegionFilter] = useState<string>("");
 
   return (
-    <div className="h-full w-screen overflow-y-auto overflow-x-hidden">
+    <div className="flex h-full w-screen flex-col gap-4 overflow-y-auto overflow-x-hidden">
       <CountriesFilters
         textFilter={textFilter}
         setTextFilter={setTextFilter}

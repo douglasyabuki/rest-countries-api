@@ -18,7 +18,7 @@ export default function RegionFilter({
 
   return (
     <select
-      className="selection:outline-none focus:outline-none"
+      className="rounded-md border-[1px] border-light-mode-element bg-light-mode-element px-4 py-3 outline-none transition-colors duration-150 focus:border-dark-mode-element dark:border-dark-mode-element dark:bg-dark-mode-element dark:focus:border-light-mode-element"
       onChange={onChangeHandler}
       value={regionFilter}
     >

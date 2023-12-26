@@ -17,7 +17,7 @@ export default function CountriesFilters({
   setRegionFilter,
 }: CountriesFiltersProps) {
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <TextFilter
         textFilter={textFilter}
         setTextFilter={setTextFilter}

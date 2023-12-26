@@ -1,3 +1,7 @@
+export interface CountryFlags {
+  svg: string;
+  png: string;
+}
 export interface Country {
   name: string;
   topLevelDomain: string[];
@@ -16,10 +20,7 @@ export interface Country {
   borders: string[];
   nativeName: string;
   numericCode: string;
-  flags: {
-    svg: string;
-    png: string;
-  };
+  flags: CountryFlags;
   currencies: Array<{
     code: string;
     name: string;

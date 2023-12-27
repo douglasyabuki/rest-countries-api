@@ -1,9 +1,7 @@
 "use client";
 
-import { useNumericCodesContext } from "@/contexts/NumericCodesContext";
 import { CountryCurrency, CountryLanguage } from "@/services/countries";
-import Link from "next/link";
-import * as React from "react";
+import BorderCountries from "./border-countries/BorderCountries";
 
 export interface DetailedCountryInfoProps {
   name: string;
@@ -30,46 +28,47 @@ export default function DetailedCountryInfo({
   borders,
   population,
 }: DetailedCountryInfoProps) {
-  const { numericCodes } = useNumericCodesContext();
-
-  function getNumericCodeByAlphaCode(alphaCode: string): string | null {
-    const country = numericCodes.find(
-      (country) => country.alpha3Code === alphaCode,
-    );
-    return country ? country.numericCode : "";
-  }
-
   return (
-    <div className="flex h-full w-auto min-w-[45%] flex-col gap-1">
+    <div className="flex h-full w-auto min-w-[45%] flex-col gap-2">
       <h3 className="pb-4 text-2xl font-bold">{name}</h3>
-      <div className="flex items-center justify-between">
-        <div className="flex w-1/2 items-center gap-2">
+      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Native Name:</h4>
           <h5>{nativeName}</h5>
         </div>
-        <div className="flex w-1/2 items-center gap-2">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Top Level Domain:</h4>
           <h5>{topLevelDomain}</h5>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex w-1/2 items-center gap-2">
+      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Population:</h4>
           <h5>{population}</h5>
         </div>
-        <div className="flex w-1/2 items-center gap-2">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Currencies:</h4>
           <h5>{currencies[0]?.name}</h5>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex w-1/2 items-center gap-2">
+      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Region:</h4>
           <h5>{region}</h5>
         </div>
-        <div className="flex w-1/2 items-center gap-2">
+        <div className="flex w-full items-center gap-2 md:w-1/2">
           <h4 className="text-base font-semibold">Languages:</h4>
-          <h5>{languages?.map((language) => language.name + ", ")}</h5>
+          <h5>
+            {languages?.map(
+              (language, id) =>
+                language.name +
+                (languages?.length > 1
+                  ? languages.length - 1 === id
+                    ? ``
+                    : `, `
+                  : ""),
+            )}
+          </h5>
         </div>
       </div>
       <div className="flex w-auto items-center gap-2">
@@ -80,21 +79,7 @@ export default function DetailedCountryInfo({
         <h4 className="text-base font-semibold">Capital:</h4>
         <h5>{capital}</h5>
       </div>
-      <div className="flex items-center gap-2 pt-4">
-        <h4 className="text-base font-semibold">Border Countries:</h4>
-        {borders?.map(
-          (border, id) =>
-            id <= 4 && (
-              <Link
-                key={id}
-                href={"/countries/" + getNumericCodeByAlphaCode(border)}
-                className="flex transform-gpu items-center justify-center rounded-md bg-light-mode-element px-4 py-1 shadow-sm shadow-transparent-black transition-all duration-150 hover:scale-105 hover:shadow-md dark:bg-dark-mode-element"
-              >
-                {border}{" "}
-              </Link>
-            ),
-        )}
-      </div>
+      <BorderCountries borders={borders}></BorderCountries>
     </div>
   );
 }

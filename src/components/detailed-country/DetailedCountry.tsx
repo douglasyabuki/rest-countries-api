@@ -13,7 +13,7 @@ export interface DetailedCountryProps {
 
 export default function DetailedCountry({ countries }: DetailedCountryProps) {
   return (
-    <div className="flex h-full w-full flex-col items-start gap-4">
+    <div className="flex h-full w-full flex-col items-start gap-8">
       <Link
         href={`/`}
         className="flex items-center gap-3 rounded-md bg-light-mode-element px-8 py-2 shadow-md shadow-transparent-black transition-shadow duration-150 hover:shadow-lg dark:bg-dark-mode-element"
@@ -25,7 +25,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
       </Link>
       {countries.map((country) => (
         <div
-          className="flex min-w-full items-center justify-between"
+          className="flex min-w-full flex-col items-center gap-8 md:flex-row md:justify-between md:gap-0"
           key={country.name}
         >
           <DetailedCountryFlag flags={country.flags}></DetailedCountryFlag>

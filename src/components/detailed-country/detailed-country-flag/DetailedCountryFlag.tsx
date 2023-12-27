@@ -12,7 +12,7 @@ export default function DetailedCountryFlag({
   flags,
 }: DetailedCountryFlagProps) {
   return (
-    <div className="w-auto min-w-[45%]">
+    <div className="w-auto min-w-full md:min-w-[45%]">
       <Image
         className="cover h-full w-full "
         src={flags?.png}

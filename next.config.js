@@ -15,7 +15,6 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    domains: ["flagcdn.com", "upload.wikimedia.org"],
   },
 };
 

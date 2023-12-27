@@ -11,14 +11,13 @@ export interface DetailedCountryFlagProps {
 export default function DetailedCountryFlag({
   flags,
 }: DetailedCountryFlagProps) {
-  console.log({ flags });
   return (
-    <div className="min-w-[45%]">
+    <div className="w-auto min-w-[45%]">
       <Image
         className="cover h-full w-full "
         src={flags?.png}
         alt={`${flags?.png}`}
-        height={800}
+        height={600}
         width={1200}
       />
     </div>

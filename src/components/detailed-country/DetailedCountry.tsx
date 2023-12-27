@@ -12,7 +12,6 @@ export interface DetailedCountryProps {
 }
 
 export default function DetailedCountry({ countries }: DetailedCountryProps) {
-  console.log(countries);
   return (
     <div className="flex h-full w-full flex-col items-start gap-4">
       <Link
@@ -26,7 +25,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
       </Link>
       {countries.map((country) => (
         <div
-          className="flex w-full items-center justify-between gap-4"
+          className="flex min-w-full items-center justify-between"
           key={country.name}
         >
           <DetailedCountryFlag flags={country.flags}></DetailedCountryFlag>
@@ -40,6 +39,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
             currencies={country.currencies}
             languages={country.languages}
             borders={country.borders}
+            population={country.population}
           ></DetailedCountryInfo>
         </div>
       ))}

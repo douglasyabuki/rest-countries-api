@@ -2,6 +2,7 @@
 
 import FilterableCountries from "@/components/filterable-countries/FilterableCountries";
 import { HourglassIcon } from "@/components/icons/Icons";
+import LoadingFrame from "@/components/loading-frame/LoadingFrame";
 import Navbar from "@/components/navbar/Navbar";
 import { useRequest } from "@/hooks/use-request";
 import { useEffect } from "react";
@@ -29,12 +30,7 @@ export default function Page() {
       <Navbar />
       <div className="flex h-auto min-h-full w-auto min-w-full p-4">
         {loading || response === null ? (
-          <div className="flex h-full min-h-96 w-screen flex-col items-center justify-center gap-4 py-8">
-            <div className="flex h-auto w-auto animate-spin items-center justify-center">
-              <HourglassIcon />
-            </div>
-            <h2>Loading Info...</h2>
-          </div>
+          <LoadingFrame />
         ) : (
           <FilterableCountries
             allCountries={response?.data}

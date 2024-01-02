@@ -10,8 +10,14 @@ export interface CardFlagProps {
 
 export default function CardFlag({ flags }: CardFlagProps) {
   return (
-    <div className="relative h-[200px] w-[300px]">
-      <Image src={flags.svg} alt={`${flags.svg}`} fill={true} priority={true} />
+    <div className="relative h-[200px] w-[300px] overflow-hidden">
+      <Image
+        src={flags.svg}
+        alt={`${flags.svg}`}
+        fill={true}
+        priority={true}
+        objectFit="cover"
+      />
     </div>
   );
 }

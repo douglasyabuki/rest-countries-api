@@ -4,7 +4,15 @@ import { useEffect } from "react";
 
 export const useOnMount = (fn: () => void) => {
   useEffect(() => {
-    fn();
+    let ignore = false;
+
+    if (!ignore) {
+      fn();
+    }
+
+    return () => {
+      ignore = true;
+    };
     //eslint-disable-next-line
   }, []);
 };

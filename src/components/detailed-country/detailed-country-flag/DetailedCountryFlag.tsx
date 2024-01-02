@@ -12,9 +12,9 @@ export default function DetailedCountryFlag({
   flags,
 }: DetailedCountryFlagProps) {
   return (
-    <div className="w-auto min-w-full md:min-w-[45%]">
+    <div className="relative w-auto min-w-full md:min-w-[45%] md:max-w-[45%]">
       <Image
-        className="cover h-full w-full "
+        priority={true}
         src={flags?.png}
         alt={`${flags?.png}`}
         height={600}

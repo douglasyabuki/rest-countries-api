@@ -1,11 +1,10 @@
 "use client";
 
 import FilterableCountries from "@/components/filterable-countries/FilterableCountries";
-import { HourglassIcon } from "@/components/icons/Icons";
 import LoadingFrame from "@/components/loading-frame/LoadingFrame";
 import Navbar from "@/components/navbar/Navbar";
+import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
-import { useEffect } from "react";
 
 export default function Page() {
   const { loading, response, request } = useRequest("GET", "/api/countries", {
@@ -13,17 +12,7 @@ export default function Page() {
     onError: (error) => console.error("Error fetching data:", error),
   });
 
-  useEffect(() => {
-    let ignore = false;
-
-    if (!ignore) {
-      request();
-    }
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
+  useOnMount(request);
 
   return (
     <div className="min-h-screen w-full overflow-hidden bg-light-mode-background text-light-mode-text transition-all duration-200 dark:bg-dark-mode-background dark:text-dark-mode-text">

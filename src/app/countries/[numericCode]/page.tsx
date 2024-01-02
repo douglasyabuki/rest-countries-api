@@ -1,11 +1,10 @@
 "use client";
 
 import DetailedCountry from "@/components/detailed-country/DetailedCountry";
-import { HourglassIcon } from "@/components/icons/Icons";
 import LoadingFrame from "@/components/loading-frame/LoadingFrame";
 import Navbar from "@/components/navbar/Navbar";
+import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
-import { useEffect } from "react";
 
 export default function Page({ params }: { params: { numericCode: string } }) {
   const { loading, response, request } = useRequest(
@@ -17,17 +16,7 @@ export default function Page({ params }: { params: { numericCode: string } }) {
     },
   );
 
-  useEffect(() => {
-    let ignore = false;
-
-    if (!ignore) {
-      request();
-    }
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
+  useOnMount(request);
 
   return (
     <div className="min-h-screen w-full overflow-hidden bg-light-mode-background text-light-mode-text transition-all duration-200 dark:bg-dark-mode-background dark:text-dark-mode-text">

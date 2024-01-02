@@ -28,58 +28,64 @@ export default function DetailedCountryInfo({
   borders,
   population,
 }: DetailedCountryInfoProps) {
+  const detailsList = [
+    { id: 0, label: "Native Name", value: nativeName, fullWidth: false },
+    {
+      id: 1,
+      label: "Top Level Domain",
+      value: topLevelDomain,
+      fullWidth: false,
+    },
+    { id: 2, label: "Population", value: population, fullWidth: false },
+    {
+      id: 3,
+      label: "Currencies",
+      value: currencies[0]?.name,
+      fullWidth: false,
+    },
+    {
+      id: 4,
+      label: "Region",
+      value: region,
+      fullWidth: false,
+    },
+    {
+      id: 5,
+      label: "Languages",
+      value: languages?.map(
+        (language, id) =>
+          language.name +
+          (languages?.length > 1
+            ? languages.length - 1 === id
+              ? ``
+              : `, `
+            : ""),
+      ),
+      fullWidth: false,
+    },
+    { id: 6, label: "Subregion", value: subregion, fullWidth: true },
+    { id: 7, label: "Capital", value: capital, fullWidth: true },
+  ];
+
   return (
-    <div className="flex h-full w-auto min-w-[45%] flex-col gap-2">
+    <div className="flex h-full w-auto flex-col gap-2 px-4 md:min-w-[45%] md:max-w-[45%] md:px-0">
       <h3 className="pb-4 text-2xl font-bold">{name}</h3>
-      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Native Name:</h4>
-          <h5>{nativeName}</h5>
-        </div>
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Top Level Domain:</h4>
-          <h5>{topLevelDomain}</h5>
-        </div>
+      <div className="flex flex-wrap items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
+        {detailsList?.map((detailedInfo) => (
+          <div
+            className={`${
+              detailedInfo.fullWidth ? `` : `md:w-1/2`
+            } flex w-full items-center gap-2`}
+            key={detailedInfo.id}
+          >
+            <h4 className="text-base font-semibold">{detailedInfo.label}</h4>
+            <h5>{detailedInfo.value}</h5>
+          </div>
+        ))}
       </div>
-      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Population:</h4>
-          <h5>{population}</h5>
-        </div>
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Currencies:</h4>
-          <h5>{currencies[0]?.name}</h5>
-        </div>
-      </div>
-      <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Region:</h4>
-          <h5>{region}</h5>
-        </div>
-        <div className="flex w-full items-center gap-2 md:w-1/2">
-          <h4 className="text-base font-semibold">Languages:</h4>
-          <h5>
-            {languages?.map(
-              (language, id) =>
-                language.name +
-                (languages?.length > 1
-                  ? languages.length - 1 === id
-                    ? ``
-                    : `, `
-                  : ""),
-            )}
-          </h5>
-        </div>
-      </div>
-      <div className="flex w-auto items-center gap-2">
-        <h4 className="text-base font-semibold">Subregion:</h4>
-        <h5>{subregion}</h5>
-      </div>
-      <div className="flex w-auto items-center gap-2">
-        <h4 className="text-base font-semibold">Capital:</h4>
-        <h5>{capital}</h5>
-      </div>
-      <BorderCountries borders={borders}></BorderCountries>
+      {borders?.length > 0 && (
+        <BorderCountries borders={borders}></BorderCountries>
+      )}
     </div>
   );
 }

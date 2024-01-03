@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { CountryFlags } from "@/services/countries";
+import { CountryFlags } from "@/interfaces/countries";
 
 export interface CardFlagProps {
   flags: CountryFlags;
@@ -11,13 +11,7 @@ export interface CardFlagProps {
 export default function CardFlag({ flags }: CardFlagProps) {
   return (
     <div className="relative h-[200px] w-[300px] overflow-hidden">
-      <Image
-        src={flags.svg}
-        alt={`${flags.svg}`}
-        fill={true}
-        priority={true}
-        objectFit="cover"
-      />
+      <Image src={flags.svg} alt={`${flags.svg}`} fill={true} priority={true} />
     </div>
   );
 }

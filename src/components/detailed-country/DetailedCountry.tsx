@@ -1,6 +1,6 @@
 "use client";
 
-import { Country } from "@/services/countries";
+import { Country } from "@/interfaces/countries";
 import * as React from "react";
 import DetailedCountryFlag from "./detailed-country-flag/DetailedCountryFlag";
 import Link from "next/link";

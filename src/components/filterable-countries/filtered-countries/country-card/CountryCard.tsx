@@ -1,6 +1,6 @@
 "use client";
 
-import { Country } from "@/services/countries";
+import { Country } from "@/interfaces/countries";
 import * as React from "react";
 import Link from "next/link";
 import CardFlag from "./card-flag/CardFlag";

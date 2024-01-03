@@ -1,6 +1,6 @@
 "use client";
 
-import { CountryCurrency, CountryLanguage } from "@/services/countries";
+import { CountryCurrency, CountryLanguage } from "@/interfaces/countries";
 import BorderCountries from "./border-countries/BorderCountries";
 
 export interface DetailedCountryInfoProps {

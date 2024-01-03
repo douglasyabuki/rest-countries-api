@@ -1,6 +1,6 @@
 "use client";
 
-import { CountryFlags } from "@/services/countries";
+import { CountryFlags } from "@/interfaces/countries";
 import Image from "next/image";
 import * as React from "react";
 

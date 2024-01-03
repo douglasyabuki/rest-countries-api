@@ -15,6 +15,7 @@ export interface CountryLanguage {
   name: string;
   nativeName: string;
 }
+
 export interface Country {
   name: string;
   topLevelDomain: string[];
@@ -46,17 +47,4 @@ export interface Country {
   }>;
   cioc: string;
   independent: boolean;
-}
-
-export async function getAllCountries() {
-  const response = await fetch("/api/countries", {
-    method: "GET",
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return response.json();
 }

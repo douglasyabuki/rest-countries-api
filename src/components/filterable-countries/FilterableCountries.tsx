@@ -1,6 +1,6 @@
 "use client";
 
-import { Country } from "@/services/countries";
+import { Country } from "@/interfaces/countries";
 import { useState } from "react";
 import CountriesFilters from "./countries-filters/CountriesFilters";
 import FilteredCountries from "./filtered-countries/FilteredCountries";

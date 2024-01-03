@@ -14,7 +14,7 @@ export default function CountryCard({ country }: CountryCardProps) {
   return (
     <Link
       href={`/countries/${country.numericCode}`}
-      className="flex h-[400px] w-[300px] transform-gpu flex-col items-center justify-start overflow-hidden rounded-md bg-light-mode-element shadow-sm shadow-transparent-black transition-all duration-200 hover:-translate-y-2 hover:shadow-md dark:bg-dark-mode-element"
+      className="element flex h-[400px] w-[300px] transform-gpu flex-col items-center justify-start overflow-hidden rounded-md shadow-sm shadow-transparent-black hover:-translate-y-2 hover:shadow-md"
     >
       <CardFlag flags={country.flags}></CardFlag>
       <CardInfo

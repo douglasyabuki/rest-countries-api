@@ -15,7 +15,7 @@ export default function Page() {
   useOnMount(request);
 
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-light-mode-background text-light-mode-text transition-all duration-200 dark:bg-dark-mode-background dark:text-dark-mode-text">
+    <div className="wrapper min-h-screen w-full overflow-hidden">
       <Navbar />
       <div className="flex h-auto min-h-full w-auto min-w-full p-4">
         {loading || response === null ? (

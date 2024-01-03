@@ -16,7 +16,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
     <div className="flex h-full w-full flex-col items-start gap-8">
       <Link
         href={`/`}
-        className="flex items-center gap-3 rounded-md bg-light-mode-element px-8 py-2 shadow-md shadow-transparent-black transition-shadow duration-150 hover:shadow-lg dark:bg-dark-mode-element"
+        className="element flex items-center gap-3 rounded-md px-8 py-2 shadow-md shadow-transparent-black transition-shadow duration-150 hover:shadow-lg "
       >
         <div className="flex h-6 w-6 items-center justify-center">
           <ArrowBackIcon />

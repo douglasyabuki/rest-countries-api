@@ -27,7 +27,7 @@ export default function BorderCountries({ borders }: BorderCountriesProps) {
             <Link
               key={id}
               href={"/countries/" + getNumericCodeByAlphaCode(border)}
-              className="flex transform-gpu items-center justify-center rounded-md bg-light-mode-element px-4 py-1 shadow-sm shadow-transparent-black transition-all duration-150 hover:scale-105 hover:shadow-md dark:bg-dark-mode-element"
+              className="element flex items-center justify-center rounded-md px-4 py-1 shadow-sm shadow-transparent-black transition-all duration-150 hover:scale-105 hover:shadow-md"
             >
               {border}{" "}
             </Link>

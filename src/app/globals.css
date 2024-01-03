@@ -10,6 +10,18 @@
   overflow: "hidden";
 }
 
+@layer components {
+  .wrapper {
+    @apply transform-gpu bg-light-mode-background text-light-mode-text transition-all duration-150 dark:bg-dark-mode-background dark:text-dark-mode-text;
+  }
+  .element {
+    @apply transform-gpu bg-light-mode-element text-light-mode-text transition-all duration-150 dark:bg-dark-mode-element dark:text-dark-mode-text;
+  }
+  .filter {
+    @apply transform-gpu border-light-mode-element bg-light-mode-element transition-all duration-150 focus:border-dark-mode-element dark:border-dark-mode-element dark:bg-dark-mode-element dark:focus:border-light-mode-element;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

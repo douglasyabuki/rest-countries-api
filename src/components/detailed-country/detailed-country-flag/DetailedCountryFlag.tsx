@@ -12,13 +12,21 @@ export default function DetailedCountryFlag({
   flags,
 }: DetailedCountryFlagProps) {
   return (
-    <div className="relative w-auto min-w-full md:min-w-[45%] md:max-w-[45%]">
+    <div className="relative h-[200px] w-[300px] md:h-auto md:min-w-[45%] md:max-w-[45%]">
+      <Image
+        priority={true}
+        src={flags?.png}
+        alt={`${flags?.png}`}
+        fill={true}
+        className="md:hidden"
+      />
       <Image
         priority={true}
         src={flags?.png}
         alt={`${flags?.png}`}
         height={600}
         width={1200}
+        className="hidden md:block"
       />
     </div>
   );

@@ -25,7 +25,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
       </Link>
       {countries.map((country) => (
         <div
-          className="flex min-w-full flex-col items-center gap-8 md:flex-row md:justify-between md:gap-0"
+          className="flex min-w-full flex-col items-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0"
           key={country.name}
         >
           <DetailedCountryFlag flags={country.flags}></DetailedCountryFlag>

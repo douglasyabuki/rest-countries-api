@@ -3,6 +3,7 @@
 import { Country } from "@/interfaces/countries";
 import * as React from "react";
 import CountryCard from "./country-card/CountryCard";
+import FakeCard from "./country-card/fake-card/FakeCard";
 
 export interface FilteredCountriesProps {
   allCountries: Country[];
@@ -41,6 +42,7 @@ export default function FilteredCountries({
       {filteredCountries.map((filteredCountry, id) => (
         <CountryCard key={id} country={filteredCountry}></CountryCard>
       ))}
+      <FakeCard />
     </div>
   );
 }

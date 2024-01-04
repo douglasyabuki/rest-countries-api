@@ -16,7 +16,7 @@ export default function Page() {
 
   return (
     <div className="wrapper min-h-screen w-full overflow-hidden">
-      <Navbar />
+      <Navbar title="Where in the world" />
       <div className="flex h-auto min-h-full w-auto min-w-full p-4">
         {loading || response === null ? (
           <LoadingFrame />

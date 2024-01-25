@@ -105,7 +105,9 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
 
   const onGameReset = () => {
     setGameStage(gameStages.RESETTING);
-    onGameStart();
+    setTimeout(() => {
+      onGameStart();
+    }, 500);
   };
 
   const onGameStart = () => {

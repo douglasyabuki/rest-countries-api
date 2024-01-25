@@ -20,6 +20,8 @@ export default function Slider({ gameStage, onReset }: SliderProps) {
       "bg-light-mode-background dark:bg-dark-mode-background translate-x-[90px]",
     [gameStages.GAME_OVER]:
       "bg-light-mode-background dark:bg-dark-mode-background translate-x-[90px]",
+    [gameStages.RESETTING]:
+      "bg-light-mode-background dark:bg-dark-mode-background translate-x-[90px]",
   };
 
   return (

@@ -1,26 +1,21 @@
 "use client";
 
-import { Country } from "@/interfaces/countries";
-import * as React from "react";
-import { Flag } from "../GuessingGame";
 import Image from "next/image";
+import { Flag, FlagOption } from "../GuessingGame";
+import Options from "./options/options";
 
-export interface GameBoardProps {
-  allCountries: Country[];
+interface GameBoardProps {
   currentFlag: Flag;
-  currentOptions: string[];
-  onRightAnswer: () => void;
-  onWrongAnswer: () => void;
-  onGameReset: () => void;
+  currentOptions: FlagOption[];
+  gameStage: string;
+  onAnswerClick: (clickedOption: FlagOption) => void;
 }
 
 export default function GameBoard({
-  allCountries,
   currentFlag,
   currentOptions,
-  onRightAnswer,
-  onWrongAnswer,
-  onGameReset,
+  gameStage,
+  onAnswerClick,
 }: GameBoardProps) {
   return (
     <div>
@@ -33,6 +28,13 @@ export default function GameBoard({
             priority={true}
           />
         </div>
+      )}
+      {currentOptions?.length > 0 && (
+        <Options
+          currentOptions={currentOptions}
+          onAnswerClick={onAnswerClick}
+          gameStage={gameStage}
+        ></Options>
       )}
     </div>
   );

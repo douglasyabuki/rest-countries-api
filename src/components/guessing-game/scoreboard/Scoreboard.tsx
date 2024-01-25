@@ -56,8 +56,8 @@ export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
         <h1>Scoreboard</h1>
         <button
           className={`${
-            gameStage === gameStages.RESETTING ? `scale-0` : `scale-100`
-          } absolute right-0 flex h-6 w-6 transform-gpu items-center justify-center rounded-full bg-light-mode-background p-1 duration-150 hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background`}
+            gameStage === gameStages.RESETTING ? `hidden` : `flex`
+          } absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background`}
           onClick={onReset}
           disabled={isReloadButtonDisabled}
         >

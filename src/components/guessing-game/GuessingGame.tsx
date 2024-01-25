@@ -6,6 +6,7 @@ import Scoreboard from "./scoreboard/Scoreboard";
 import GameBoard from "./game-board/GameBoard";
 import { randomNumber, randomUniqueNumbersList } from "@/utils/math-utils";
 import { useOnMount } from "@/hooks/use-on-mount";
+import LoadingFrame from "../loading-frame/LoadingFrame";
 
 interface GuessingGameProps {
   allCountries: Country[];
@@ -185,17 +186,25 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
 
   useOnMount(onGameStart);
 
+  const isGameReady = useMemo(() => {
+    return flags.length === numberOfRounds && options.length === numberOfRounds;
+  }, [flags.length, options.length]);
+
   return (
     <div className="flex h-full w-screen items-start justify-center overflow-y-auto overflow-x-hidden">
-      <div className="flex w-[300px] flex-col gap-2">
-        <Scoreboard gameStage={gameStage} onReset={onGameReset}></Scoreboard>
-        <GameBoard
-          currentFlag={flags[currentRound]}
-          currentOptions={options[currentRound]}
-          gameStage={gameStage}
-          onAnswerClick={onAnswerClick}
-        ></GameBoard>
-      </div>
+      {isGameReady ? (
+        <div className="flex h-auto w-[300px] flex-col gap-2 overflow-hidden">
+          <Scoreboard gameStage={gameStage} onReset={onGameReset}></Scoreboard>
+          <GameBoard
+            currentFlag={flags[currentRound]}
+            currentOptions={options[currentRound]}
+            gameStage={gameStage}
+            onAnswerClick={onAnswerClick}
+          ></GameBoard>
+        </div>
+      ) : (
+        <LoadingFrame />
+      )}
     </div>
   );
 }

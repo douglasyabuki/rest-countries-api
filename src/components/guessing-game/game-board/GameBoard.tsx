@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Flag, FlagOption } from "../GuessingGame";
+import { Flag, FlagOption, gameStages } from "../GuessingGame";
 import Options from "./options/options";
+import { useMemo } from "react";
 
 interface GameBoardProps {
   currentFlag: Flag;
@@ -17,8 +18,18 @@ export default function GameBoard({
   gameStage,
   onAnswerClick,
 }: GameBoardProps) {
+  const isFallen = useMemo(() => {
+    return (
+      gameStage === gameStages.ROUND_END || gameStage === gameStages.RESETTING
+    );
+  }, [gameStage]);
+
   return (
-    <div>
+    <div
+      className={`${
+        isFallen ? `translate-y-full` : `translate-y-0`
+      } transform-gpu delay-150 duration-200 ease-in-out`}
+    >
       {currentFlag.flag && (
         <div className="relative h-[200px] w-[300px] overflow-hidden">
           <Image

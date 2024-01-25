@@ -55,7 +55,7 @@ export default function Option({
                 : `border-red-700 disabled:border-red-500 dark:disabled:border-red-950 dark:disabled:text-gray-400`
             }`
           : `border-dark-mode-element dark:border-light-mode-element`
-      } h-11 w-full transform-gpu truncate rounded-md border-[1px] px-4 py-2 text-start shadow-sm shadow-transparent-black duration-150 hover:scale-105 hover:font-bold hover:shadow-md disabled:hover:scale-100 disabled:hover:font-normal`}
+      } h-11 w-full scale-95 transform-gpu truncate rounded-md border-[1px] px-4 py-2 text-start shadow-sm shadow-transparent-black duration-150 hover:scale-100 hover:font-bold hover:shadow-md disabled:hover:scale-95 disabled:hover:font-normal`}
       onClick={onClickHandler}
       disabled={currentOption.isSelected}
     >

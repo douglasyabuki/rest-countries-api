@@ -8,11 +8,10 @@ interface ScoreboardProps {
   onReset: () => void;
 }
 
+const initialCount = { rights: 0, wrongs: 0 };
+
 export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
-  const [displayedCount, setDisplayedCount] = useState({
-    rights: 0,
-    wrongs: 0,
-  });
+  const [displayedCount, setDisplayedCount] = useState(initialCount);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -31,6 +30,10 @@ export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
           return { ...prev, rights: prev.rights + 1 };
         });
       }, 500);
+    }
+
+    if (gameStage === gameStages.RESETTING) {
+      setDisplayedCount(initialCount);
     }
 
     return () => {

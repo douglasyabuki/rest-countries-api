@@ -20,9 +20,9 @@ export default function Options({
       {currentOptions.map((currentOption, id) => (
         <Option
           key={id}
-          onAnswerClick={() => onAnswerClick(currentOption)}
+          onAnswerClick={onAnswerClick}
           gameStage={gameStage}
-          optionValues={currentOptions[id]}
+          currentOption={currentOption}
         ></Option>
       ))}
     </div>

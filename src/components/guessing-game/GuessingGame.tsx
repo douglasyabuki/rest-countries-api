@@ -57,7 +57,6 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
   const [options, setOptions] = useState<FlagOption[][]>([[initialOption]]);
   const [currentRound, setCurrentRound] = useState(0);
 
-  console.log({ gameStage });
   const onWrongAnswer = () => {
     setGameStage(gameStages.SCORING_WRONG);
     setTimeout(() => {

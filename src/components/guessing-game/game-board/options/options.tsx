@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import Option from "./option/Option";
 import { FlagOption } from "../../GuessingGame";
+import Option from "./option/Option";
 
 interface OptionsProps {
   currentOptions: FlagOption[];
@@ -23,7 +22,7 @@ export default function Options({
           onAnswerClick={onAnswerClick}
           gameStage={gameStage}
           currentOption={currentOption}
-        ></Option>
+        />
       ))}
     </div>
   );

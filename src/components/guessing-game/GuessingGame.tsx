@@ -1,12 +1,12 @@
 "use client";
 
-import { Country } from "@/interfaces/countries";
-import { useMemo, useState } from "react";
-import Scoreboard from "./scoreboard/Scoreboard";
-import GameBoard from "./game-board/GameBoard";
-import { randomNumber, randomUniqueNumbersList } from "@/utils/math-utils";
 import { useOnMount } from "@/hooks/use-on-mount";
+import { Country } from "@/interfaces/countries";
+import { randomNumber, randomUniqueNumbersList } from "@/utils/math-utils";
+import { useMemo, useState } from "react";
 import LoadingFrame from "../loading-frame/LoadingFrame";
+import GameBoard from "./game-board/GameBoard";
+import Scoreboard from "./scoreboard/Scoreboard";
 
 interface GuessingGameProps {
   allCountries: Country[];
@@ -22,11 +22,6 @@ export interface FlagOption {
   isSelected: boolean;
   isRightAnswer: boolean;
 }
-
-const initialCount = {
-  rights: 0,
-  wrongs: 0,
-};
 
 const initialFlag = {
   flag: "",
@@ -61,7 +56,7 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
   const onWrongAnswer = () => {
     setGameStage(gameStages.SCORING_WRONG);
     setTimeout(() => {
-      onRoundResume();
+      onRoundEnd();
     }, 1000);
   };
 
@@ -97,10 +92,6 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
           setGameStage(gameStages.IN_PROGRESS))
         : setGameStage(gameStages.GAME_OVER);
     }, 500);
-  };
-
-  const onRoundResume = () => {
-    setGameStage(gameStages.IN_PROGRESS);
   };
 
   const onGameReset = () => {
@@ -194,13 +185,13 @@ export default function GuessingGame({ allCountries }: GuessingGameProps) {
     <div className="flex h-full w-screen items-start justify-center overflow-y-auto overflow-x-hidden">
       {isGameReady ? (
         <div className="flex h-auto w-[300px] flex-col gap-2 overflow-hidden">
-          <Scoreboard gameStage={gameStage} onReset={onGameReset}></Scoreboard>
+          <Scoreboard gameStage={gameStage} onReset={onGameReset} />
           <GameBoard
             currentFlag={flags[currentRound]}
             currentOptions={options[currentRound]}
             gameStage={gameStage}
             onAnswerClick={onAnswerClick}
-          ></GameBoard>
+          />
         </div>
       ) : (
         <LoadingFrame />

@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useMemo } from "react";
 import { Flag, FlagOption, gameStages } from "../GuessingGame";
 import Options from "./options/options";
-import { useMemo } from "react";
 
 interface GameBoardProps {
   currentFlag: Flag;
@@ -45,7 +45,7 @@ export default function GameBoard({
           currentOptions={currentOptions}
           onAnswerClick={onAnswerClick}
           gameStage={gameStage}
-        ></Options>
+        />
       )}
     </div>
   );

@@ -52,7 +52,7 @@ export function Option({
     <button
       ref={buttonRef}
       className={twMerge(
-        "h-11 w-full scale-95 transform-gpu truncate rounded-md border-[1px] px-4 py-2 text-start shadow-sm shadow-transparent-black duration-150 hover:scale-100 hover:font-bold hover:shadow-md disabled:hover:scale-95 disabled:hover:font-normal",
+        "h-11 w-full scale-95 transform-gpu truncate rounded-md border-[1px] px-4 py-2 text-start shadow-sm shadow-transparent-black duration-150 lg:hover:scale-100 lg:hover:font-bold lg:hover:shadow-md lg:disabled:hover:scale-95 lg:disabled:hover:font-normal",
         "border-dark-mode-element dark:border-light-mode-element",
         currentOption.isRightAnswer &&
           (currentOption.isSelected ||

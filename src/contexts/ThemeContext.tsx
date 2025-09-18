@@ -1,6 +1,6 @@
 "use client";
 import { useOnMount } from "@/hooks/use-on-mount";
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface ThemeContextInterface {
   darkMode: boolean;
@@ -17,13 +17,17 @@ export function ThemeProvider({ children }: ThemeProviderInterface) {
   const [darkMode, setDarkMode] = useState(false);
 
   const getUserPreferences = () => {
+    const savedTheme = localStorage.getItem("theme");
+
     if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      savedTheme === "dark" ||
+      (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
       setDarkMode(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
     }
   };
 
@@ -32,9 +36,14 @@ export function ThemeProvider({ children }: ThemeProviderInterface) {
   const handleThemeSwitch = () => {
     const newState = !darkMode;
     setDarkMode(newState);
-    newState
-      ? document.documentElement.classList.add("dark")
-      : document.documentElement.classList.remove("dark");
+
+    if (newState) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   };
 
   return (

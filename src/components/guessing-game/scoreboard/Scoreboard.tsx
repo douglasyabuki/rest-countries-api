@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Slider from "./slider/Slider";
-import { gameStages } from "../GuessingGame";
 import { ReloadIcon } from "@/components/icons/Icons";
+import { useEffect, useMemo, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { gameStages } from "../GuessingGame";
+import Slider from "./slider/Slider";
 interface ScoreboardProps {
   gameStage: string;
   onReset: () => void;
@@ -55,9 +56,10 @@ export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
       <div className="relative flex w-full items-center justify-center">
         <h1>Scoreboard</h1>
         <button
-          className={`${
-            gameStage === gameStages.RESETTING ? `hidden` : `flex`
-          } absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background`}
+          className={twMerge(
+            "absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background",
+            gameStage === gameStages.RESETTING ? 'hidden' : 'flex',
+          )}
           onClick={onReset}
           disabled={isReloadButtonDisabled}
         >

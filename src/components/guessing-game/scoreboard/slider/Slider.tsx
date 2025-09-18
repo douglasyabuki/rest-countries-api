@@ -1,6 +1,7 @@
 "use client";
 
 import { FlagIcon, ReloadIcon } from "@/components/icons/Icons";
+import { twMerge } from "tailwind-merge";
 import { gameStages } from "../../GuessingGame";
 
 interface SliderProps {
@@ -23,10 +24,12 @@ export default function Slider({ gameStage, onReset }: SliderProps) {
     [gameStages.RESETTING]:
       "bg-light-mode-background dark:bg-dark-mode-background translate-x-[90px]",
   };
-
   return (
     <div
-      className={`${renderDictionary[gameStage]} absolute flex h-[80px] w-[80px] transform-gpu items-center justify-center rounded-md p-4 shadow-lg shadow-transparent-black transition-all duration-200`}
+      className={twMerge(
+        "absolute flex h-[80px] w-[80px] transform-gpu items-center justify-center rounded-md p-4 shadow-lg shadow-transparent-black transition-all duration-200",
+        renderDictionary[gameStage],
+      )}
     >
       {gameStage === gameStages.GAME_OVER ? (
         <button

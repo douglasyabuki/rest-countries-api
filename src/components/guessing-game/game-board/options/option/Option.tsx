@@ -61,10 +61,10 @@ export default function Option({
               gameStages.SCORING_WRONG,
               gameStages.ROUND_END,
             ].includes(gameStage)) &&
-          "border-green-700 dark:border-green-300 disabled:border-green-500 dark:disabled:border-green-800 dark:disabled:text-gray-400",
+          "border-green-700 disabled:border-green-500 dark:border-green-300 dark:disabled:border-green-800 dark:disabled:text-gray-400",
         currentOption.isSelected &&
           !currentOption.isRightAnswer &&
-          "border-red-700  dark:border-red-300 disabled:border-red-500 dark:disabled:border-red-800 dark:disabled:text-gray-400",
+          "border-red-700 disabled:border-red-500 dark:border-red-300 dark:disabled:border-red-800 dark:disabled:text-gray-400",
       )}
       onClick={onClickHandler}
       disabled={currentOption.isSelected}

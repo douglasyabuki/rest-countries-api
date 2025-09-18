@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useMemo } from "react";
+import { twMerge } from "tailwind-merge";
 import { Flag, FlagOption, gameStages } from "../GuessingGame";
 import Options from "./options/options";
 
@@ -26,9 +27,10 @@ export default function GameBoard({
 
   return (
     <div
-      className={`${
-        isFallen ? `translate-y-full` : `translate-y-0`
-      } transform-gpu delay-150 duration-200 ease-in-out`}
+      className={twMerge(
+        "transform-gpu delay-150 duration-200 ease-in-out",
+        isFallen ? "translate-y-full" : "translate-y-0",
+      )}
     >
       {currentFlag.flag && (
         <div className="relative h-[200px] w-[300px] overflow-hidden">

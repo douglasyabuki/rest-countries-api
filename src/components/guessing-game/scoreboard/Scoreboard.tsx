@@ -58,7 +58,7 @@ export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
         <button
           className={twMerge(
             "absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background",
-            gameStage === gameStages.RESETTING ? 'hidden' : 'flex',
+            gameStage === gameStages.RESETTING ? "hidden" : "flex",
           )}
           onClick={onReset}
           disabled={isReloadButtonDisabled}
@@ -75,7 +75,7 @@ export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
           <h3>RIGHTS</h3>
           <h2 className="text-3xl">{displayedCount.rights}</h2>
         </div>
-        <Slider gameStage={gameStage} onReset={onReset}></Slider>
+        <Slider gameStage={gameStage} onReset={onReset} />
       </div>
     </div>
   );

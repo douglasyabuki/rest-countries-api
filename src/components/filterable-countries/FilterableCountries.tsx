@@ -22,12 +22,12 @@ export default function FilterableCountries({
         setTextFilter={setTextFilter}
         regionFilter={regionFilter}
         setRegionFilter={setRegionFilter}
-      ></CountriesFilters>
+      />
       <FilteredCountries
         regionFilter={regionFilter}
         textFilter={textFilter}
         allCountries={allCountries}
-      ></FilteredCountries>
+      />
     </div>
   );
 }

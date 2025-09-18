@@ -40,7 +40,7 @@ export default function FilteredCountries({
   return (
     <div className="flex flex-wrap justify-evenly gap-20">
       {filteredCountries.map((filteredCountry, id) => (
-        <CountryCard key={id} country={filteredCountry}></CountryCard>
+        <CountryCard key={id} country={filteredCountry} />
       ))}
       <FakeCard />
     </div>

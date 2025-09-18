@@ -21,7 +21,7 @@ export default function Page() {
         {loading || response === null ? (
           <LoadingFrame />
         ) : (
-          <GuessingGame allCountries={response?.data}></GuessingGame>
+          <GuessingGame allCountries={response?.data} />
         )}
       </div>
     </div>

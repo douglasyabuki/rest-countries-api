@@ -21,9 +21,7 @@ export default function Page() {
         {loading || response === null ? (
           <LoadingFrame />
         ) : (
-          <FilterableCountries
-            allCountries={response?.data}
-          ></FilterableCountries>
+          <FilterableCountries allCountries={response?.data} />
         )}
       </div>
     </div>

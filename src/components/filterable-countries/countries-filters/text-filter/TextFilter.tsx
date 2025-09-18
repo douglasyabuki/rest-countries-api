@@ -27,7 +27,7 @@ export default function TextFilter({
         onInput={onInputHandler}
         className="rounded-md border-[1px] py-3 pl-9 pr-4 outline-none filter"
         placeholder="Search for a country .."
-      ></input>
+      />
     </div>
   );
 }

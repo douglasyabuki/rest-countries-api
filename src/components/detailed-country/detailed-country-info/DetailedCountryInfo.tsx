@@ -83,9 +83,7 @@ export default function DetailedCountryInfo({
           </div>
         ))}
       </div>
-      {borders?.length > 0 && (
-        <BorderCountries borders={borders}></BorderCountries>
-      )}
+      {borders?.length > 0 && <BorderCountries borders={borders} />}
     </div>
   );
 }

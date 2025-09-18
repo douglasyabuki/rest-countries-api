@@ -25,7 +25,7 @@ export default function Page({ params }: { params: { numericCode: string } }) {
         {loading || response === null || !response.country ? (
           <LoadingFrame />
         ) : (
-          <DetailedCountry countries={response.country}></DetailedCountry>
+          <DetailedCountry countries={response.country} />
         )}
       </div>
     </div>

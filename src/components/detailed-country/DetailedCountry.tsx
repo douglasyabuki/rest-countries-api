@@ -1,10 +1,9 @@
 "use client";
 
 import { Country } from "@/interfaces/countries";
-import * as React from "react";
-import DetailedCountryFlag from "./detailed-country-flag/DetailedCountryFlag";
 import Link from "next/link";
 import { ArrowBackIcon } from "../icons/Icons";
+import DetailedCountryFlag from "./detailed-country-flag/DetailedCountryFlag";
 import DetailedCountryInfo from "./detailed-country-info/DetailedCountryInfo";
 
 export interface DetailedCountryProps {
@@ -28,7 +27,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
           className="flex min-w-full flex-col items-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0"
           key={country.name}
         >
-          <DetailedCountryFlag flags={country.flags}></DetailedCountryFlag>
+          <DetailedCountryFlag flags={country.flags} />
           <DetailedCountryInfo
             name={country.name}
             nativeName={country.nativeName}
@@ -40,7 +39,7 @@ export default function DetailedCountry({ countries }: DetailedCountryProps) {
             languages={country.languages}
             borders={country.borders}
             population={country.population}
-          ></DetailedCountryInfo>
+          />
         </div>
       ))}
     </div>

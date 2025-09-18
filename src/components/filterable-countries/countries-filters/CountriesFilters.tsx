@@ -18,14 +18,11 @@ export default function CountriesFilters({
 }: CountriesFiltersProps) {
   return (
     <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <TextFilter
-        textFilter={textFilter}
-        setTextFilter={setTextFilter}
-      ></TextFilter>
+      <TextFilter textFilter={textFilter} setTextFilter={setTextFilter} />
       <RegionFilter
         regionFilter={regionFilter}
         setRegionFilter={setRegionFilter}
-      ></RegionFilter>
+      />
     </div>
   );
 }

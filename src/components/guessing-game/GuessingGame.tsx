@@ -87,6 +87,9 @@ export function GuessingGame({ allCountries }: GuessingGameProps) {
   const onRoundEnd = () => {
     setGameStage(gameStages.ROUND_END);
     setTimeout(() => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
       currentRound < numberOfRounds - 1
         ? (setCurrentRound((prev) => prev + 1),
           setGameStage(gameStages.IN_PROGRESS))

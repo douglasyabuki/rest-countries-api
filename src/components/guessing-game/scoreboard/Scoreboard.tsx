@@ -4,7 +4,7 @@ import { ReloadIcon } from "@/components/icons/Icons";
 import { useEffect, useMemo, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { gameStages } from "../GuessingGame";
-import Slider from "./slider/Slider";
+import { Slider } from "./slider/Slider";
 interface ScoreboardProps {
   gameStage: string;
   onReset: () => void;
@@ -12,7 +12,7 @@ interface ScoreboardProps {
 
 const initialCount = { rights: 0, wrongs: 0 };
 
-export default function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
+export function Scoreboard({ gameStage, onReset }: ScoreboardProps) {
   const [displayedCount, setDisplayedCount] = useState(initialCount);
 
   useEffect(() => {

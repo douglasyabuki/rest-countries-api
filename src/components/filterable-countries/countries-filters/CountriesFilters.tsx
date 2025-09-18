@@ -1,7 +1,7 @@
 "use client";
 
-import RegionFilter from "./region-filter/RegionFilter";
-import TextFilter from "./text-filter/TextFilter";
+import { RegionFilter } from "./region-filter/RegionFilter";
+import { TextFilter } from "./text-filter/TextFilter";
 
 export interface CountriesFiltersProps {
   textFilter: string;
@@ -10,7 +10,7 @@ export interface CountriesFiltersProps {
   setRegionFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function CountriesFilters({
+export function CountriesFilters({
   textFilter,
   setTextFilter,
   regionFilter,

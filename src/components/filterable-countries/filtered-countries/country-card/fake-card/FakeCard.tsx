@@ -1,9 +1,8 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 
-export default function FakeCard() {
+export function FakeCard() {
   return (
     <Link
       className="element flex h-[400px] w-[300px] transform-gpu animate-pulse flex-col items-center justify-start overflow-hidden rounded-md shadow-sm shadow-transparent-black hover:-translate-y-2 hover:shadow-md"

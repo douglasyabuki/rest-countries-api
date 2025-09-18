@@ -2,8 +2,8 @@
 
 import { Country } from "@/interfaces/countries";
 import * as React from "react";
-import CountryCard from "./country-card/CountryCard";
-import FakeCard from "./country-card/fake-card/FakeCard";
+import { CountryCard } from "./country-card/CountryCard";
+import { FakeCard } from "./country-card/fake-card/FakeCard";
 
 export interface FilteredCountriesProps {
   allCountries: Country[];
@@ -11,7 +11,7 @@ export interface FilteredCountriesProps {
   regionFilter: string;
 }
 
-export default function FilteredCountries({
+export function FilteredCountries({
   allCountries,
   textFilter,
   regionFilter,

@@ -12,7 +12,7 @@ interface OptionProps {
   onAnswerClick: (clickedOption: FlagOption) => void;
 }
 
-export default function Option({
+export function Option({
   currentOption,
   gameStage,
   onAnswerClick,

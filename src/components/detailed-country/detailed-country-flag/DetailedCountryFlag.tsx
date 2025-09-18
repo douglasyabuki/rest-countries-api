@@ -2,13 +2,12 @@
 
 import { CountryFlags } from "@/interfaces/countries";
 import Image from "next/image";
-import * as React from "react";
 
 export interface DetailedCountryFlagProps {
   flags: CountryFlags;
 }
 
-export default function DetailedCountryFlag({
+export function DetailedCountryFlag({
   flags,
 }: DetailedCountryFlagProps) {
   return (

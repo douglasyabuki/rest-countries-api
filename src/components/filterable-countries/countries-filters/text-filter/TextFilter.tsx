@@ -8,7 +8,7 @@ export interface ITextFilterProps {
   setTextFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function TextFilter({
+export function TextFilter({
   textFilter,
   setTextFilter,
 }: ITextFilterProps) {

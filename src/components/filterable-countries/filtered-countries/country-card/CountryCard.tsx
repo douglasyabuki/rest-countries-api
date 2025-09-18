@@ -2,14 +2,14 @@
 
 import { Country } from "@/interfaces/countries";
 import Link from "next/link";
-import CardFlag from "./card-flag/CardFlag";
-import CardInfo from "./card-info/CardInfo";
+import { CardFlag } from "./card-flag/CardFlag";
+import { CardInfo } from "./card-info/CardInfo";
 
 export interface CountryCardProps {
   country: Country;
 }
 
-export default function CountryCard({ country }: CountryCardProps) {
+export function CountryCard({ country }: CountryCardProps) {
   return (
     <Link
       href={`/countries/${country.numericCode}`}

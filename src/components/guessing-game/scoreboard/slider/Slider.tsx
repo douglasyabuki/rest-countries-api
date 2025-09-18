@@ -9,7 +9,7 @@ interface SliderProps {
   onReset: () => void;
 }
 
-export default function Slider({ gameStage, onReset }: SliderProps) {
+export function Slider({ gameStage, onReset }: SliderProps) {
   const renderDictionary = {
     [gameStages.SCORING_WRONG]: "bg-red-700 translate-x-0",
     [gameStages.SCORING_RIGHT]: "bg-green-700 translate-x-[180px]",

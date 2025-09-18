@@ -1,7 +1,7 @@
 "use client";
 
 import { FlagOption } from "../../GuessingGame";
-import Option from "./option/Option";
+import { Option } from "./option/Option";
 
 interface OptionsProps {
   currentOptions: FlagOption[];
@@ -9,7 +9,7 @@ interface OptionsProps {
   onAnswerClick: (clickedOption: FlagOption) => void;
 }
 
-export default function Options({
+export function Options({
   currentOptions,
   gameStage,
   onAnswerClick,

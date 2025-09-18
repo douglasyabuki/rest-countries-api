@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 import { Flag, FlagOption, gameStages } from "../GuessingGame";
-import Options from "./options/options";
+import { Options } from "./options/options";
 
 interface GameBoardProps {
   currentFlag: Flag;
@@ -13,7 +13,7 @@ interface GameBoardProps {
   onAnswerClick: (clickedOption: FlagOption) => void;
 }
 
-export default function GameBoard({
+export function GameBoard({
   currentFlag,
   currentOptions,
   gameStage,

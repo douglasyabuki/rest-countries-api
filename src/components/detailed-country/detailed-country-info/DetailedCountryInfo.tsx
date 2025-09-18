@@ -1,7 +1,7 @@
 "use client";
 
 import { CountryCurrency, CountryLanguage } from "@/interfaces/countries";
-import BorderCountries from "./border-countries/BorderCountries";
+import { BorderCountries } from "./border-countries/BorderCountries";
 
 export interface DetailedCountryInfoProps {
   name: string;
@@ -16,7 +16,7 @@ export interface DetailedCountryInfoProps {
   population: number;
 }
 
-export default function DetailedCountryInfo({
+export function DetailedCountryInfo({
   name,
   nativeName,
   region,

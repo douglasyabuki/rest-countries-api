@@ -8,7 +8,7 @@ export interface RegionFilterProps {
   setRegionFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function RegionFilter({
+export function RegionFilter({
   regionFilter,
   setRegionFilter,
 }: RegionFilterProps) {

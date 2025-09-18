@@ -3,14 +3,14 @@
 import { Country } from "@/interfaces/countries";
 import Link from "next/link";
 import { ArrowBackIcon } from "../icons/Icons";
-import DetailedCountryFlag from "./detailed-country-flag/DetailedCountryFlag";
-import DetailedCountryInfo from "./detailed-country-info/DetailedCountryInfo";
+import { DetailedCountryFlag } from "./detailed-country-flag/DetailedCountryFlag";
+import { DetailedCountryInfo } from "./detailed-country-info/DetailedCountryInfo";
 
 export interface DetailedCountryProps {
   countries: Country[];
 }
 
-export default function DetailedCountry({ countries }: DetailedCountryProps) {
+export function DetailedCountry({ countries }: DetailedCountryProps) {
   return (
     <div className="flex h-full w-full flex-col items-start gap-8">
       <Link

@@ -1,8 +1,8 @@
 "use client";
 
-import GuessingGame from "@/components/guessing-game/GuessingGame";
-import LoadingFrame from "@/components/loading-frame/LoadingFrame";
-import Navbar from "@/components/navbar/Navbar";
+import { GuessingGame } from "@/components/guessing-game/GuessingGame";
+import { LoadingFrame } from "@/components/loading-frame/LoadingFrame";
+import { Navbar } from "@/components/navbar/Navbar";
 import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
 

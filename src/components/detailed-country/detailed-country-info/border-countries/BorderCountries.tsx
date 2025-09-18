@@ -2,13 +2,12 @@
 
 import { useNumericCodesContext } from "@/contexts/NumericCodesContext";
 import Link from "next/link";
-import * as React from "react";
 
 export interface BorderCountriesProps {
   borders: string[];
 }
 
-export default function BorderCountries({ borders }: BorderCountriesProps) {
+export function BorderCountries({ borders }: BorderCountriesProps) {
   const { numericCodes } = useNumericCodesContext();
 
   function getNumericCodeByAlphaCode(alphaCode: string): string | null {

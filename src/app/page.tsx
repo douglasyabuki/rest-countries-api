@@ -1,8 +1,8 @@
 "use client";
 
-import FilterableCountries from "@/components/filterable-countries/FilterableCountries";
-import LoadingFrame from "@/components/loading-frame/LoadingFrame";
-import Navbar from "@/components/navbar/Navbar";
+import { FilterableCountries } from "@/components/filterable-countries/FilterableCountries";
+import { LoadingFrame } from "@/components/loading-frame/LoadingFrame";
+import { Navbar } from "@/components/navbar/Navbar";
 import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
 

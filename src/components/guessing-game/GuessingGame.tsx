@@ -4,9 +4,9 @@ import { useOnMount } from "@/hooks/use-on-mount";
 import { Country } from "@/interfaces/countries";
 import { randomNumber, randomUniqueNumbersList } from "@/utils/math-utils";
 import { useMemo, useState } from "react";
-import LoadingFrame from "../loading-frame/LoadingFrame";
-import GameBoard from "./game-board/GameBoard";
-import Scoreboard from "./scoreboard/Scoreboard";
+import { LoadingFrame } from "../loading-frame/LoadingFrame";
+import { GameBoard } from "./game-board/GameBoard";
+import { Scoreboard } from "./scoreboard/Scoreboard";
 
 interface GuessingGameProps {
   allCountries: Country[];
@@ -47,7 +47,7 @@ export const gameStages = {
 const wrongOptionsNumber = 4;
 const numberOfRounds = 20;
 
-export default function GuessingGame({ allCountries }: GuessingGameProps) {
+export function GuessingGame({ allCountries }: GuessingGameProps) {
   const [gameStage, setGameStage] = useState(gameStages.INITIALIZING);
   const [flags, setFlags] = useState<Flag[]>([initialFlag]);
   const [options, setOptions] = useState<FlagOption[][]>([[initialOption]]);

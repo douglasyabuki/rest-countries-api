@@ -2,14 +2,14 @@
 
 import { Country } from "@/interfaces/countries";
 import { useState } from "react";
-import CountriesFilters from "./countries-filters/CountriesFilters";
-import FilteredCountries from "./filtered-countries/FilteredCountries";
+import { CountriesFilters } from "./countries-filters/CountriesFilters";
+import { FilteredCountries } from "./filtered-countries/FilteredCountries";
 
 export interface IFilterableCountriesProps {
   allCountries: Country[];
 }
 
-export default function FilterableCountries({
+export function FilterableCountries({
   allCountries,
 }: IFilterableCountriesProps) {
   const [textFilter, setTextFilter] = useState<string>("");

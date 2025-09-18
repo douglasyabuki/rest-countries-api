@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 
 export interface CardInfoProps {
   name: string;
@@ -9,7 +8,7 @@ export interface CardInfoProps {
   capital: string;
 }
 
-export default function CardInfo({
+export function CardInfo({
   name,
   population,
   region,

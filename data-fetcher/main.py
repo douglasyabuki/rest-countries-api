@@ -257,7 +257,7 @@ COUNTRY_CODES=[
 ]
 BASE_URL="https://restcountries.com/v3.1/alpha/"
 
-def fetch_and_save():
+def fetch_and_save_data():
     """
     Makes one request per second to base_url + string.
     Appends each JSON response to data.json at the repo root.
@@ -310,4 +310,34 @@ def fetch_and_save():
     with data_file.open("w", encoding="utf-8") as f:
         json.dump(all_data, f, indent=2)
 
-fetch_and_save()
+def generate_minimal_data():
+    data_file = Path("../src/app/api/v3/countries/data.json")
+    minimal_data_file = Path("../src/app/api/v3/countries/minimal-data.json")
+    
+    if data_file.exists():
+        with data_file.open("r", encoding="utf-8") as f:
+            try:
+                all_data = json.load(f)
+            except json.JSONDecodeError:
+                all_data = []
+    
+    mapped_data = [
+        {
+            "name": item.get("name", {}).get("common", None),
+            "capital": item.get("capital", [None])[0],
+            "cca2": item.get("cca2", None),
+            "ccn3": item.get("ccn3", None),
+            "cioc": item.get("cioc", None),
+            "flags": item.get("flags", None),
+            "region": item.get("region", None),
+            "population": item.get("population", None),
+        }
+        for item in all_data
+    ]
+
+    with minimal_data_file.open("w", encoding="utf-8") as f:
+        json.dump(mapped_data, f, indent=2)
+
+
+fetch_and_save_data()
+generate_minimal_data()

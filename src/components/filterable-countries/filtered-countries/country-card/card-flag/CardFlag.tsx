@@ -1,16 +1,18 @@
 "use client";
 
-import { CountryFlags } from "@/interfaces/countries";
+import { Flags } from "@/interfaces/countriesv3";
 import Image from "next/image";
 
 export interface CardFlagProps {
-  flags: CountryFlags;
+  flags: Flags;
 }
 
 export function CardFlag({ flags }: CardFlagProps) {
+  const { alt, png, svg } = flags;
+  const src = svg ?? png ?? "";
   return (
     <div className="relative h-[200px] w-[300px] overflow-hidden">
-      <Image src={flags.svg} alt={`${flags.svg}`} fill={true} priority={true} />
+      <Image src={src} alt={alt ?? ""} fill={true} priority={true} />
     </div>
   );
 }

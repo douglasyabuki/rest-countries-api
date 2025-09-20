@@ -1,24 +1,22 @@
 "use client";
 
-import { CountryCurrency, CountryLanguage } from "@/interfaces/countries";
+import { Currencies, Languages } from "@/interfaces/countriesv3";
 import { BorderCountries } from "./border-countries/BorderCountries";
 
 export interface DetailedCountryInfoProps {
   name: string;
-  nativeName: string;
   region: string;
-  subregion: string;
-  capital: string;
-  topLevelDomain: string[];
-  currencies: CountryCurrency[];
-  languages: CountryLanguage[];
-  borders: string[];
+  subregion?: string;
+  capital?: string[];
+  topLevelDomain?: string[];
+  currencies?: Currencies;
+  languages?: Languages;
+  borders?: string[];
   population: number;
 }
 
 export function DetailedCountryInfo({
   name,
-  nativeName,
   region,
   subregion,
   capital,
@@ -29,42 +27,53 @@ export function DetailedCountryInfo({
   population,
 }: DetailedCountryInfoProps) {
   const detailsList = [
-    { id: 0, label: "Native Name", value: nativeName, fullWidth: false },
     {
-      id: 1,
+      id: 0,
       label: "Top Level Domain",
       value: topLevelDomain,
       fullWidth: false,
     },
-    { id: 2, label: "Population", value: population, fullWidth: false },
+    { id: 1, label: "Population", value: population, fullWidth: false },
     {
-      id: 3,
+      id: 2,
       label: "Currencies",
-      value: currencies[0]?.name,
+      value:
+        currencies &&
+        Object.keys(currencies)?.map(
+          (currency, id) =>
+            currency +
+            (Object.keys(currencies).length > 1
+              ? Object.keys(currencies).length - 1 === id
+                ? ``
+                : `, `
+              : ""),
+        ),
       fullWidth: false,
     },
     {
-      id: 4,
+      id: 3,
       label: "Region",
       value: region,
       fullWidth: false,
     },
     {
-      id: 5,
+      id: 4,
       label: "Languages",
-      value: languages?.map(
-        (language, id) =>
-          language.name +
-          (languages?.length > 1
-            ? languages.length - 1 === id
-              ? ``
-              : `, `
-            : ""),
-      ),
+      value:
+        languages &&
+        Object.values(languages)?.map(
+          (language, id) =>
+            language +
+            (Object.values(languages).length > 1
+              ? Object.values(languages).length - 1 === id
+                ? ``
+                : `, `
+              : ""),
+        ),
       fullWidth: false,
     },
-    { id: 6, label: "Subregion", value: subregion, fullWidth: true },
-    { id: 7, label: "Capital", value: capital, fullWidth: true },
+    { id: 5, label: "Subregion", value: subregion, fullWidth: true },
+    { id: 6, label: "Capital", value: capital, fullWidth: true },
   ];
 
   return (
@@ -83,7 +92,7 @@ export function DetailedCountryInfo({
           </div>
         ))}
       </div>
-      {borders?.length > 0 && <BorderCountries borders={borders} />}
+      {borders && borders?.length > 0 && <BorderCountries borders={borders} />}
     </div>
   );
 }

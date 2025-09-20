@@ -1,12 +1,12 @@
 "use client";
 
-import { Country } from "@/interfaces/countries";
+import { CountrySummary } from "@/interfaces/countriesv3";
 import * as React from "react";
 import { CountryCard } from "./country-card/CountryCard";
 import { FakeCard } from "./country-card/fake-card/FakeCard";
 
 export interface FilteredCountriesProps {
-  allCountries: Country[];
+  allCountries: CountrySummary[];
   textFilter: string;
   regionFilter: string;
 }

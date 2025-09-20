@@ -6,10 +6,10 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
 
-export default function Page({ params }: { params: { numericCode: string } }) {
+export default function Page({ params }: { params: { code: string } }) {
   const { loading, response, request } = useRequest(
     "GET",
-    `/api/countries/${params.numericCode}`,
+    `/api/v3/countries/alpha/${params.code}`,
     {
       onSuccess: (data) => console.log("Data fetched successfully:", data),
       onError: (error) => console.error("Error fetching data:", error),
@@ -22,10 +22,10 @@ export default function Page({ params }: { params: { numericCode: string } }) {
     <div className="min-h-screen w-full overflow-hidden bg-light-mode-background text-light-mode-text transition-all duration-200 dark:bg-dark-mode-background dark:text-dark-mode-text">
       <Navbar title="Where in the world" />
       <div className="flex h-auto min-h-full w-auto min-w-full p-4">
-        {loading || response === null || !response.country ? (
-          <LoadingFrame />
+        {!loading && response?.country ? (
+          <DetailedCountry country={response.country} />
         ) : (
-          <DetailedCountry countries={response.country} />
+          <LoadingFrame />
         )}
       </div>
     </div>

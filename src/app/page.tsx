@@ -7,12 +7,16 @@ import { useOnMount } from "@/hooks/use-on-mount";
 import { useRequest } from "@/hooks/use-request";
 
 export default function Page() {
-  const { loading, response, request } = useRequest("GET", "/api/countries", {
-    onSuccess: (data) => console.log("Data fetched successfully:", data),
-    onError: (error) => console.error("Error fetching data:", error),
-  });
+  const { loading, response, request } = useRequest(
+    "GET",
+    "/api/v3/countries",
+    {
+      onSuccess: (data) => console.log("Data fetched successfully:", data),
+      onError: (error) => console.error("Error fetching data:", error),
+    },
+  );
 
-  useOnMount(request);
+  useOnMount(() => request({ params: { minimal: true } }));
 
   return (
     <div className="wrapper min-h-screen w-full overflow-hidden">

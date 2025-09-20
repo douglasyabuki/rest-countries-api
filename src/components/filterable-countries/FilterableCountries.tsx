@@ -1,12 +1,12 @@
 "use client";
 
-import { Country } from "@/interfaces/countries";
+import { CountrySummary } from "@/interfaces/countriesv3";
 import { useState } from "react";
 import { CountriesFilters } from "./countries-filters/CountriesFilters";
 import { FilteredCountries } from "./filtered-countries/FilteredCountries";
 
 export interface IFilterableCountriesProps {
-  allCountries: Country[];
+  allCountries: CountrySummary[];
 }
 
 export function FilterableCountries({

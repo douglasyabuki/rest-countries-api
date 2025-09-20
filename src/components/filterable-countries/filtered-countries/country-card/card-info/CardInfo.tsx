@@ -5,7 +5,7 @@ export interface CardInfoProps {
   name: string;
   population: number;
   region: string;
-  capital: string;
+  capital?: string;
 }
 
 export function CardInfo({

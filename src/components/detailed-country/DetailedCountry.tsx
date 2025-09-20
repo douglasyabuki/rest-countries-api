@@ -1,16 +1,16 @@
 "use client";
 
-import { Country } from "@/interfaces/countries";
+import { Country } from "@/interfaces/countriesv3";
 import Link from "next/link";
 import { ArrowBackIcon } from "../icons/Icons";
 import { DetailedCountryFlag } from "./detailed-country-flag/DetailedCountryFlag";
 import { DetailedCountryInfo } from "./detailed-country-info/DetailedCountryInfo";
 
 export interface DetailedCountryProps {
-  countries: Country[];
+  country: Country;
 }
 
-export function DetailedCountry({ countries }: DetailedCountryProps) {
+export function DetailedCountry({ country }: DetailedCountryProps) {
   return (
     <div className="flex h-full w-full flex-col items-start gap-8">
       <Link
@@ -22,26 +22,23 @@ export function DetailedCountry({ countries }: DetailedCountryProps) {
         </div>
         Back
       </Link>
-      {countries.map((country) => (
-        <div
-          className="flex min-w-full flex-col items-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0"
-          key={country.name}
-        >
-          <DetailedCountryFlag flags={country.flags} />
-          <DetailedCountryInfo
-            name={country.name}
-            nativeName={country.nativeName}
-            region={country.region}
-            subregion={country.subregion}
-            capital={country.capital}
-            topLevelDomain={country.topLevelDomain}
-            currencies={country.currencies}
-            languages={country.languages}
-            borders={country.borders}
-            population={country.population}
-          />
-        </div>
-      ))}
+      <div
+        className="flex min-w-full flex-col items-start gap-8 md:flex-row md:items-center md:justify-between md:gap-0"
+        key={country.name?.common}
+      >
+        <DetailedCountryFlag flags={country.flags} />
+        <DetailedCountryInfo
+          name={country.name.common}
+          region={country.region}
+          subregion={country.subregion}
+          capital={country.capital}
+          topLevelDomain={country.tld}
+          currencies={country.currencies}
+          languages={country.languages}
+          borders={country.borders}
+          population={country.population}
+        />
+      </div>
     </div>
   );
 }

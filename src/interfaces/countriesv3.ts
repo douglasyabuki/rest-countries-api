@@ -70,6 +70,8 @@ interface PostalCode {
   regex: string | null;
 }
 
+export type Region = "Africa" | "America" | "Asia" | "Europe" | "Oceania"
+
 type Translations = Record<
   string,
   {
@@ -106,7 +108,7 @@ export interface Country {
   capital?: string[];
   altSpellings?: string[];
 
-  region: string;
+  region: Region;
   subregion?: string;
 
   languages?: Languages;

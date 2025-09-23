@@ -5,21 +5,17 @@ import { regionList } from "./region-list/region-list";
 
 export interface RegionFilterProps {
   regionFilter: string;
-  setRegionFilter: React.Dispatch<React.SetStateAction<string>>;
+  onRegionFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export function RegionFilter({
   regionFilter,
-  setRegionFilter,
+  onRegionFilterChange,
 }: RegionFilterProps) {
-  const onChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setRegionFilter(event.target.value);
-  };
-
   return (
     <select
       className="rounded-md border-[1px] px-4 py-3 outline-none filter"
-      onChange={onChangeHandler}
+      onChange={onRegionFilterChange}
       value={regionFilter}
     >
       <option value="" disabled hidden>

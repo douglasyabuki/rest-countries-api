@@ -19,9 +19,13 @@ export function FilterableCountries({
     <div className="flex h-full w-screen flex-col gap-4 overflow-y-auto overflow-x-hidden">
       <CountriesFilters
         textFilter={textFilter}
-        setTextFilter={setTextFilter}
+        onTextFilterChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setTextFilter(e.target.value)
+        }
         regionFilter={regionFilter}
-        setRegionFilter={setRegionFilter}
+        onRegionFilterChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+          setRegionFilter(e.target.value);
+        }}
       />
       <FilteredCountries
         regionFilter={regionFilter}

@@ -1,10 +1,12 @@
-interface Region {
+import { Region } from "@/interfaces/countriesv3";
+
+interface RegionOption {
   id: number;
-  value: string;
-  content: string;
+  value: Region | "";
+  content: Region | "All Regions";
 }
 
-export const regionList: Region[] = [
+export const regionList: RegionOption[] = [
   { id: 0, value: "Africa", content: "Africa" },
   { id: 1, value: "America", content: "America" },
   { id: 2, value: "Asia", content: "Asia" },

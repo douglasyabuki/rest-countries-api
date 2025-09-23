@@ -5,23 +5,23 @@ import { TextFilter } from "./text-filter/TextFilter";
 
 export interface CountriesFiltersProps {
   textFilter: string;
-  setTextFilter: React.Dispatch<React.SetStateAction<string>>;
+  onTextFilterChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   regionFilter: string;
-  setRegionFilter: React.Dispatch<React.SetStateAction<string>>;
+  onRegionFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export function CountriesFilters({
   textFilter,
-  setTextFilter,
+  onTextFilterChange,
   regionFilter,
-  setRegionFilter,
+  onRegionFilterChange,
 }: CountriesFiltersProps) {
   return (
     <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <TextFilter textFilter={textFilter} setTextFilter={setTextFilter} />
+      <TextFilter textFilter={textFilter} onTextFilterChange={onTextFilterChange} />
       <RegionFilter
         regionFilter={regionFilter}
-        setRegionFilter={setRegionFilter}
+        onRegionFilterChange={onRegionFilterChange}
       />
     </div>
   );

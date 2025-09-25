@@ -1,8 +1,7 @@
+import { Difficulty } from "@/interfaces/game";
 import { getQueryParams } from "@/utils/request-utils";
 import { NextResponse } from "next/server";
 import data from "../data.json";
-
-type Difficulty = "easy" | "medium" | "hard";
 
 const DifficultyFilters: Record<
   Difficulty,

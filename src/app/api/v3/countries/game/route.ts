@@ -36,7 +36,9 @@ export async function GET(request: Request) {
       ) {
         return null;
       }
-      return { name, flags, translations, region };
+      const { common, official } = name
+      const { svg: flag } = flags
+      return { flag, translations: {...translations, eng: {common, official}}, region };
     })
     .filter(Boolean);
 

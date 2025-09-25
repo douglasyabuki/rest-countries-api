@@ -72,7 +72,7 @@ interface PostalCode {
 
 export type Region = "Africa" | "America" | "Asia" | "Europe" | "Oceania"
 
-type Translations = Record<
+export type Translations = Record<
   string,
   {
     official: string;

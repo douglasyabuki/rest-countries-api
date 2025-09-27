@@ -1,15 +1,15 @@
 "use client";
 
 import { useOnMount } from "@/hooks/use-on-mount";
-import { Country } from "@/interfaces/countries";
+import { GameCountry } from "@/interfaces/game";
 import { randomNumber, randomUniqueNumbersList } from "@/utils/math-utils";
 import { useMemo, useState } from "react";
 import { LoadingFrame } from "../loading-frame/LoadingFrame";
 import { GameBoard } from "./game-board/GameBoard";
 import { Scoreboard } from "./scoreboard/Scoreboard";
 
-interface GuessingGameProps {
-  allCountries: Country[];
+interface GuessingGame {
+  allCountries: GameCountry[];
 }
 
 export interface Flag {
@@ -17,8 +17,7 @@ export interface Flag {
   name: string;
 }
 
-export interface FlagOption {
-  name: string;
+export interface FlagOption extends Partial<GameCountry> {
   isSelected: boolean;
   isRightAnswer: boolean;
 }
@@ -47,7 +46,7 @@ export const gameStages = {
 const wrongOptionsNumber = 4;
 const numberOfRounds = 20;
 
-export function GuessingGame({ allCountries }: GuessingGameProps) {
+export function GuessingGame({ allCountries }: GuessingGame) {
   const [gameStage, setGameStage] = useState(gameStages.INITIALIZING);
   const [flags, setFlags] = useState<Flag[]>([initialFlag]);
   const [options, setOptions] = useState<FlagOption[][]>([[initialOption]]);
@@ -127,13 +126,7 @@ export function GuessingGame({ allCountries }: GuessingGameProps) {
     setGameStage(gameStages.IN_PROGRESS);
   };
 
-  const getRandomFlag = (
-    unplayedCountries: Country[],
-  ): {
-    flag: Flag;
-    options: FlagOption[];
-    newUnplayedCountries: Country[];
-  } | null => {
+  const getRandomFlag = (unplayedCountries: GameCountry[]) => {
     if (unplayedCountries.length === 0) {
       console.log("No more countries to play with.");
       return null;
@@ -159,15 +152,13 @@ export function GuessingGame({ allCountries }: GuessingGameProps) {
       0,
       sameRegionCountries.length - 1,
       wrongOptionsNumber,
-    ).map((index) => sameRegionCountries[index].name);
+    ).map((index) => sameRegionCountries[index]);
 
-    const options = [chosenCountry.name, ...wrongOptions]
-      .sort()
-      .map((name) => ({
-        name,
-        isSelected: false,
-        isRightAnswer: name === chosenCountry.name,
-      }));
+    const options = [chosenCountry, ...wrongOptions].sort().map((option) => ({
+      ...option,
+      isSelected: false,
+      isRightAnswer: option.name === chosenCountry.name,
+    }));
 
     return {
       flag: { flag: chosenCountry.flag, name: chosenCountry.name },

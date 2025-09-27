@@ -22,13 +22,16 @@ export async function GET() {
       langs[key].reduce((curr, acc) => (acc += curr), 0) === expectedLength,
   );
 
-  const data = iso693data
-    .map(({ id, ref_name }) =>
-      validLanguages.some((l) => l.toLowerCase() === id.toLowerCase())
-        ? { id, language: ref_name }
-        : null,
-    )
-    .filter(Boolean);
+  const data = [{ id: 'eng', language: "English"}]
+
+  iso693data
+    .forEach(({ id, ref_name }) => {
+      if (validLanguages.some((l) => l.toLowerCase() === id.toLowerCase())) {
+        data.push({ id, language: ref_name });
+      }
+    })
+  
+  data.sort((a, b) => a.language.localeCompare(b.language))
 
   return NextResponse.json({
     data,

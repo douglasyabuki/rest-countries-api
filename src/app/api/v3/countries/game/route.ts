@@ -38,11 +38,11 @@ export async function GET(request: Request) {
       }
       const { common, official } = name
       const { svg: flag } = flags
-      return { flag, translations: {...translations, eng: {common, official}}, region };
+      return { name: common, flag, translations: {...translations, eng: {common, official}}, region };
     })
     .filter(Boolean);
 
   return NextResponse.json({
-    gameData,
+    data: gameData,
   });
 }

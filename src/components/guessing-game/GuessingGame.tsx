@@ -154,11 +154,13 @@ export function GuessingGame({ allCountries }: GuessingGame) {
       wrongOptionsNumber,
     ).map((index) => sameRegionCountries[index]);
 
-    const options = [chosenCountry, ...wrongOptions].sort().map((option) => ({
-      ...option,
-      isSelected: false,
-      isRightAnswer: option.name === chosenCountry.name,
-    }));
+    const options = [chosenCountry, ...wrongOptions]
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((option) => ({
+        ...option,
+        isSelected: false,
+        isRightAnswer: option.name === chosenCountry.name,
+      }));
 
     return {
       flag: { flag: chosenCountry.flag, name: chosenCountry.name },

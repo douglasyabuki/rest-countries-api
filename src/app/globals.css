@@ -30,6 +30,10 @@
   }
 }
 
+html, body {
+  overscroll-behavior-y: contain;
+}
+
 h1 {
   font-weight: 800;
 }

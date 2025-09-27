@@ -60,7 +60,7 @@ export function Scoreboard({ gameStage, onReset }: Scoreboard) {
         <div className="relative flex w-full items-center justify-center">
           <button
             className={twMerge(
-              "absolute left-0 flex h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 duration-150 focus:outline-none disabled:opacity-60 dark:bg-dark-mode-background",
+              "absolute left-0 flex h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 outline-none duration-150 disabled:opacity-60 dark:bg-dark-mode-background",
               isSettingsToggled && "rotate-180",
             )}
             onClick={() => setIsSettingsToggled(!isSettingsToggled)}
@@ -70,7 +70,7 @@ export function Scoreboard({ gameStage, onReset }: Scoreboard) {
           <h1>Scoreboard</h1>
           <button
             className={twMerge(
-              "absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 hover:animate-spin focus:outline-none disabled:opacity-60 dark:bg-dark-mode-background",
+              "absolute right-0 h-6 w-6 items-center justify-center rounded-full bg-light-mode-background p-1 outline-none hover:animate-spin disabled:opacity-60 dark:bg-dark-mode-background",
               gameStage === gameStages.RESETTING ? "hidden" : "flex",
             )}
             onClick={onReset}

@@ -211,6 +211,7 @@ export const WheelPicker = ({
   // Mouse events
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
+    containerRef.current?.focus();
     handleDragStart(e.clientY);
   };
 
@@ -224,11 +225,11 @@ export const WheelPicker = ({
 
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {
+    containerRef.current?.focus();
     handleDragStart(e.touches[0].clientY);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault();
     handleDragMove(e.touches[0].clientY);
   };
 
@@ -363,7 +364,10 @@ export const WheelPicker = ({
     <div className="mb-6 flex flex-col items-center">
       <div
         ref={containerRef}
-        className={`relative cursor-grab select-none overflow-hidden ${isDragging ? "cursor-grabbing" : ""}`}
+        className={twMerge(
+          "relative box-border cursor-grab select-none overflow-hidden border-y-4 border-double border-transparent duration-150 focus:border-indigo-400/40 outline-none dark:focus:border-indigo-400/40",
+          isDragging ? "cursor-grabbing" : "",
+        )}
         style={{
           height: containerHeight,
           width: "200px",

@@ -361,71 +361,68 @@ export const WheelPicker = ({
   );
 
   return (
-    <div className="mb-6 flex flex-col items-center">
+    <div
+      ref={containerRef}
+      className={twMerge(
+        "relative box-border w-[300px] cursor-grab select-none overflow-hidden border-y-4 border-double border-transparent outline-none duration-150 focus:border-indigo-400/40 dark:focus:border-indigo-400/40",
+        isDragging ? "cursor-grabbing" : "",
+      )}
+      style={{
+        height: containerHeight,
+        overscrollBehavior: "contain",
+      }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      {/* Selection indicator */}
       <div
-        ref={containerRef}
-        className={twMerge(
-          "relative box-border cursor-grab select-none overflow-hidden border-y-4 border-double border-transparent duration-150 focus:border-indigo-400/40 outline-none dark:focus:border-indigo-400/40",
-          isDragging ? "cursor-grabbing" : "",
-        )}
+        className="pointer-events-none absolute left-0 right-0 z-10 rounded-lg border-b-2 border-t-2 border-indigo-400 bg-transparent opacity-40"
         style={{
-          height: containerHeight,
-          width: "200px",
-          overscrollBehavior: "contain",
+          top: centerOffset,
+          height: itemHeight,
         }}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onWheel={handleWheel}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
+      />
+
+      {/* Items container */}
+      <div
+        className="relative transition-transform duration-200 ease-out"
+        style={{
+          transform: `translateY(${centerOffset - scrollTop}px)`,
+          transitionDuration: isDragging ? "0ms" : "200ms",
+        }}
       >
-        {/* Selection indicator */}
-        <div
-          className="pointer-events-none absolute left-0 right-0 z-10 rounded-lg border-b-2 border-t-2 border-indigo-400 bg-transparent opacity-40"
-          style={{
-            top: centerOffset,
-            height: itemHeight,
-          }}
-        />
+        {extendedItems.map((item, index) => {
+          const isSelected = infinite
+            ? (index - centerStart + items.length) % items.length ===
+              currentIndex
+            : index === currentIndex;
 
-        {/* Items container */}
-        <div
-          className="relative transition-transform duration-200 ease-out"
-          style={{
-            transform: `translateY(${centerOffset - scrollTop}px)`,
-            transitionDuration: isDragging ? "0ms" : "200ms",
-          }}
-        >
-          {extendedItems.map((item, index) => {
-            const isSelected = infinite
-              ? (index - centerStart + items.length) % items.length ===
-                currentIndex
-              : index === currentIndex;
-
-            return (
-              <div
-                key={index}
-                className={twMerge(
-                  "flex items-center justify-center text-center font-medium transition-all duration-200",
-                  isSelected
-                    ? "text-lg font-bold text-light-mode-text dark:text-dark-mode-text"
-                    : "text-base font-normal text-light-mode-text/80 dark:text-dark-mode-text/80",
-                )}
-                style={{
-                  height: itemHeight,
-                  opacity: getItemOpacity(index),
-                  transform: `scale(${getItemScale(index)})`,
-                }}
-              >
-                {item}
-              </div>
-            );
-          })}
-        </div>
+          return (
+            <div
+              key={index}
+              className={twMerge(
+                "flex items-center justify-center text-center font-medium transition-all duration-200",
+                isSelected
+                  ? "text-lg font-bold text-light-mode-text dark:text-dark-mode-text"
+                  : "text-base font-normal text-light-mode-text/80 dark:text-dark-mode-text/80",
+              )}
+              style={{
+                height: itemHeight,
+                opacity: getItemOpacity(index),
+                transform: `scale(${getItemScale(index)})`,
+              }}
+            >
+              {item}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

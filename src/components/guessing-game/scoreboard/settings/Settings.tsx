@@ -36,7 +36,7 @@ export const Settings = ({
   return (
     <div
       className={twMerge(
-        "absolute z-20 box-border flex h-[150px] w-[300px] flex-col items-center justify-start gap-4 overflow-hidden rounded-md border-[2px] border-light-mode-element bg-light-mode-background px-6 py-3 shadow-xl duration-150 dark:border-dark-mode-element dark:bg-dark-mode-background",
+        "absolute z-20 box-border flex h-[150px] w-[300px] flex-col items-center justify-start gap-12 overflow-hidden rounded-md border-[2px] border-light-mode-element bg-light-mode-background px-6 py-3 shadow-xl duration-150 dark:border-dark-mode-element dark:bg-dark-mode-background",
         isSettingsToggled && "h-fit translate-y-[155px]",
       )}
     >

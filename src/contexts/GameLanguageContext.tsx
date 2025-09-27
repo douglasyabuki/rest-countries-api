@@ -56,8 +56,10 @@ export function GameLanguageProvider({
   }, [gameLanguageOptions]);
 
   const handleGameLanguageSwitch = (language: string) => {
-    setGameLanguage(language);
-    localStorage.setItem("game-language", language);
+    if (language !== gameLanguage) {
+      setGameLanguage(language);
+      localStorage.setItem("game-language", language);
+    }
   };
 
   return (
